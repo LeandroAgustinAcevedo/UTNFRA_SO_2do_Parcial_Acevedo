@@ -1,5 +1,6 @@
 #!/bin/bash
-PRIMER_DISCO="$(sudo fdisk -l | grep "2 GiB" | awk -F' ' '{print $2}' | awk -F':' '{print $1}')"
+PRIMER_DISCO="$(sudo fdisk -l | grep "2 GiB" | head -n1 | awk -F' ' '{print $2}' | awk -F':' '{print $1}')"
+SEGUNDO_DISCO="$(sudo fdisk -l | grep "1 GiB" | head -n1 | awk -F' ' '{print $2}' | awk -F':' '{print $1}')"
 echo "Trabajando en el disco de 2GB: '${PRIMER_DISCO}'"
 sudo fdisk "$PRIMER_DISCO" << EOF
 n
