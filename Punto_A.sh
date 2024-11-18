@@ -33,6 +33,7 @@ sudo lvcreate -L 1.5G vg_datos -n lv_workareas
 sudo lvcreate -L 512M vg_temp -n lv_swap
 sudo mkfs -t ext4 /dev/mapper/vg_datos-lv_docker
 sudo mkfs -t ext4 /dev/mapper/vg_datos-lv_workareas
+sudo mkdir /work/
 sudo mkswap /dev/mapper/vg_temp-lv_swap
 sudo mount /dev/mapper/vg_datos-lv_docker /var/lib/docker/
 sudo mount /dev/mapper/vg_datos-lv_workareas /work/
