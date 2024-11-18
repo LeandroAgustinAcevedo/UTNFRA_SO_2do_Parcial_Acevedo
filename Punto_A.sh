@@ -7,15 +7,7 @@ n
 
 
 
-+1.5G
-t
 
-8E
-n
-
-
-
-+5M
 t
 
 8E
@@ -27,15 +19,14 @@ n
 
 
 
-+512M
+
 t
 
 82
 w
 EOF
 sudo wipefs -a ${PRIMER_DISCO}1
-sudo wipefs -a ${PRIMER_DISCO}2
-sudo vgcreate vg_datos ${PRIMER_DISCO}1 ${PRIMER_DISCO}2
+sudo vgcreate vg_datos ${PRIMER_DISCO}1
 sudo vgcreate vg_temp ${SEGUNDO_DISCO}1
 sudo lvcreate -L 5M vg_datos -n lv_docker
 sudo lvcreate -L 1.5G vg_datos -n lv_workareas
