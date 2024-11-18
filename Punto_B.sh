@@ -10,6 +10,7 @@ LISTA="$(grep -v '#' $path)"
 
 for linea in $LISTA; do
 	IFS=',' read -r nombre grupo directorio <<< "$linea"
-	sudo useradd -m -s /bin/bash -d "$directorio" -g "$grupo" -p "$PASSWORD" "$nombre"
+	sudo groupadd "$grupo"
+	sudo useradd -m -s /bin/bash -d "$directorio" -G "$grupo" -p "$PASSWORD" "$nombre"
 done
 
