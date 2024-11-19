@@ -10,14 +10,10 @@ Nombre: Leandro Agustin		Apellido: Acevedo
 Division: 115
 EOF 
 
-IP="$(curl ifconfig.me)"
-DISTRIBUCION="$(grep -i PRETTY_NAME /etc/os-release | awk -F'=' '{print $2}')"
-CORES="$(nproc)"
-
 cat << EOF > equipo_template.j2
-IP: $IP
-Distribucion: $DISTRIBUCION
-Cantidad de Cores: $CORES
+IP: "$(curl ifconfig.me)"
+Distribucion: "$(grep -i PRETTY_NAME /etc/os-release | awk -F'=' '{print $2}')"
+Cantidad de Cores: "$(nproc)"
 EOF
 
 cd ../
@@ -58,5 +54,5 @@ EOF
 
 cd $HOME/UTN-FRA_SO_Examenes/202406/ansible/
 
-ansible-playbook -i inventory playbook.yml
+sudo ansible-playbook -i inventory playbook.yml
 
